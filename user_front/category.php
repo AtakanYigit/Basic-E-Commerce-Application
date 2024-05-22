@@ -88,18 +88,22 @@
             <h1>Welcome to Yigit's Store</h1>
             <p class = "mb-4">Yigit's Store is a leading online store that offers a wide range of products at competitive prices. Our goal is to provide our customers with the best shopping experience possible. We offer a wide selection of products, including electronics, clothing, home goods, and more. Whether you're looking for the latest tech gadgets or stylish fashion accessories, you'll find it all at Yigit's Store. Shop with us today and experience the difference!</p>
             <div class = "d-flex justify-content-between gap-3">
-                <?php foreach(query_parser("SELECT * FROM products") as $product) { ?>
-                    <div class = "card rounded" style = "width: 20%;">
-                        <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" class = "card-img-top" alt = "<?php echo $product["name"]; ?>">
-                        <div class = "card-body">
-                            <h5 class = "card-title"><?php echo $product["name"]; ?></h5>
-                            <p class = "card-text"><?php echo $product["description"]; ?></p>
-                            <a href = "#" class = "btn btn-primary">Buy Now</a>
-                            <a href = "#" class = "btn btn-secondary">Add to Cart</a>
-                            <a href = "#" class = "btn btn-secondary">Details</a>
-                        </div>
+            <?php
+                foreach (query_parser("SELECT p.* FROM products AS p INNER JOIN categories AS c ON p.category_id = c.id WHERE c.name = 'Test'") as $product) {
+                ?>
+                <div class="card rounded" style="width: 20%;">
+                    <img src="data:image/png;base64,<?php echo base64_encode($product["image"]); ?>" class="card-img-top" alt="<?php echo $product["name"]; ?>">
+                    <div class="card-body">
+                    <h5 class="card-title"><?php echo $product["name"]; ?></h5>
+                    <p class="card-text"><?php echo $product["description"]; ?></p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                    <a href="#" class="btn btn-secondary">Add to Cart</a>
+                    <a href="#" class="btn btn-secondary">Details</a>
                     </div>
-                <?php } ?>
+                </div>
+                <?php
+                }
+                ?>            
             </div>
         </main>
         <script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity = "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin = "anonymous"></script>
