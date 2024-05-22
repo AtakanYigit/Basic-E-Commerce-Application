@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "berkhoca_db";
+$dbname = "store_db";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

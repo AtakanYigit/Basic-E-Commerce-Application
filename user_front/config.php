@@ -53,7 +53,6 @@ function insert_or_delete($sql='') {
 	  die("Connection failed: " . $conn->connect_error);
 	}
 
-
 	if(empty($sql)) {
 		return 'sql statement is empty';
 	}

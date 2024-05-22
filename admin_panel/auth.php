@@ -8,7 +8,7 @@ $password = $_POST['form_password'];
 
 
 $sql = "SELECT * FROM admin_table WHERE admin_username = '$username' AND admin_pass = '$password' ";
-$result = berkhoca_query_parser($sql);
+$result = query_parser($sql);
 // echo "<pre>"; print_r($result); die();
 
 if(!empty($result) && count($result) > 0) {

@@ -20,6 +20,13 @@
                         DASHBOARD
                     </a>                
                 </li>
+
+                <li>             
+                    <a href="add_product.php">
+                        <i class="fa fa-angle-double-right"></i>
+                        Add Product
+                    </a>                
+                </li>
                             
                 <li class="dropdown">
                     <a href="javascript:;">
