@@ -80,6 +80,9 @@
                         <li class = "nav-item">
                             <a class = "nav-link" href = "contact.php">Contact</a>
                         </li>
+                        <li class = "nav-item">
+                            <a class = "nav-link" href = "cart.php">Cart</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -94,9 +97,11 @@
                         <div class = "card-body">
                             <h5 class = "card-title"><?php echo $product["name"]; ?></h5>
                             <p class = "card-text"><?php echo $product["description"]; ?></p>
-                            <a href = "#" class = "btn btn-primary">Buy Now</a>
-                            <a href = "#" class = "btn btn-secondary">Add to Cart</a>
-                            <a href = "#" class = "btn btn-secondary">Details</a>
+                            <a class = "btn btn-primary"   href = "order.php/<?php echo $product["name"]; ?>">Buy Now</a>
+                            <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Add to Cart</a>
+                            <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Details</a>
+                    <p style = "width: 50px"><?php echo base64_encode($product["image"]); ?><p>
+
                         </div>
                     </div>
                 <?php } ?>

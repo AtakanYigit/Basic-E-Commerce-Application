@@ -26,7 +26,33 @@
 
             <div id="addProduct">
                 <h3>Add Product</h3>
-
+                <form action="add_product_upload.php" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Product Name</label>
+                        <input type="text" name="name" class="form-control" id="exampleInputName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputType" class="form-label">category_id</label>
+                        <input type="text" name="category_id"  class="form-control" id="exampleInputType">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputDescription" class="form-label">Description</label>
+                        <input type="text" name="description" class="form-control" id="exampleInputDescription">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputQuantity" class="form-label">Quantity</label>
+                        <input type="number" name="quantity" class="form-control" id="exampleInputQuantity">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPrice" class="form-label">Price</label>
+                        <input type="Number" name="price" class="form-control" id="exampleInputPrice">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" name="image" />
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
 

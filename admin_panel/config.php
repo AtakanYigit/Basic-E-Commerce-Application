@@ -1,73 +1,57 @@
 <?php 
+    session_start();
 
-session_start(); //--we started session--
+    ini_set('display_errors', '1'); // 1 is on, 0 is off
+    ini_set('display_startup_errors', '1'); // 1 is on, 0 is off
+    error_reporting(E_ALL);
 
-//--to display PHP errors--
-ini_set('display_errors', '1'); // 1 is on, 0 is off
-ini_set('display_startup_errors', '1'); // 1 is on, 0 is off
-error_reporting(E_ALL);
+    //--query function--
+    function query_parser($sql='') {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "store_db";
 
-//--query function--
-function query_parser($sql='') {
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-	//--to connect database--
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "store_db";
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-	  die("Connection failed: " . $conn->connect_error);
-	}
+        if(empty($sql)) {
+            return 'sql statement is empty';
+        }
+        $query_result = $conn->query($sql);
+        // echo '<pre>'; print_r($query_result); die();
 
+        $array_result = [];
+        while($row = $query_result->fetch_assoc()) {
+            $array_result[] = $row;
+        }
+        return $array_result;
 
-	if(empty($sql)) {
-		return 'sql statement is empty';
-	}
-	$query_result = $conn->query($sql);
-	// echo '<pre>'; print_r($query_result); die();
+    }
 
-	$array_result = [];
-	while($row = $query_result->fetch_assoc()) {
-		$array_result[] = $row;
-	}
-	return $array_result;
+    function insert_or_delete($sql='') {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "store_db";
 
-}
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-function insert_or_delete($sql='') {
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-	//--to connect database--
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "store_db";
+        if(empty($sql)){
+            return 'sql statement is empty';
+        }
+        $query_result = $conn->query($sql);
+        // echo '<pre>'; print_r($query_result); die();
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-	  die("Connection failed: " . $conn->connect_error);
-	}
-
-
-	if(empty($sql)) {
-		return 'sql statement is empty';
-	}
-	$query_result = $conn->query($sql);
-	// echo '<pre>'; print_r($query_result); die();
-
-	return $query_result;
-
-}
-
-
-
-
-
+        return $query_result;
+    }
 ?>
 
 

@@ -2,10 +2,8 @@
 
 include("config.php");
 
-
 $username = $_POST['form_username'];
 $password = $_POST['form_password'];
-
 
 $sql = "SELECT * FROM admin_table WHERE admin_username = '$username' AND admin_pass = '$password' ";
 $result = query_parser($sql);
