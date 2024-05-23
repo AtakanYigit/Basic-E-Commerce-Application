@@ -100,8 +100,6 @@
                             <a class = "btn btn-primary"   href = "order.php/<?php echo $product["name"]; ?>">Buy Now</a>
                             <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Add to Cart</a>
                             <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Details</a>
-                    <p style = "width: 50px"><?php echo base64_encode($product["image"]); ?><p>
-
                         </div>
                     </div>
                 <?php } ?>
