@@ -52,41 +52,7 @@
         <link rel = "stylesheet preload"    type = "text/css"    href = "style.css" as = "style"> 
     </head>
     <body>
-        <nav class = "navbar navbar-expand-lg bg-body-tertiary">
-            <div class = "container-fluid ps-5">
-                <a class = "navbar-brand" href = "#">Yigit's Shop</a>
-                <button class = "navbar-toggler" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navbarSupportedContent" aria-controls = "navbarSupportedContent" aria-expanded = "false" aria-label = "Toggle navigation">
-                    <span class = "navbar-toggler-icon"></span>
-                </button>
-                <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
-                    <ul class = "navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class = "nav-item">
-                            <a class = "nav-link active" aria-current = "page" href = "index.php">Home</a>
-                        </li>
-                        <li class = "nav-item dropdown">
-                            <a class = "nav-link dropdown-toggle" href = "categories.php" role = "button" data-bs-toggle = "dropdown" aria-expanded = "false">
-                                Categories
-                            </a>
-                            <ul class = "dropdown-menu">
-                                <?php foreach(query_parser("SELECT * FROM categories") as $category) { ?>
-                                    <li><a class = "dropdown-item" href = "category.php/<?php echo $category["name"]; ?>"><?php echo $category["name"]; ?></a></li>
-                                <?php } ?>
-                            </ul>
-                        </li>
-
-                        <li class = "nav-item">
-                            <a class = "nav-link" href = "about.php">About</a>
-                        </li>
-                        <li class = "nav-item">
-                            <a class = "nav-link" href = "contact.php">Contact</a>
-                        </li>
-                        <li class = "nav-item">
-                            <a class = "nav-link" href = "cart.php">Cart</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php include("navbar.php"); ?>
         <main class = "ps-5 pt-3">
             <h1>Welcome to Yigit's Store</h1>
             <p class = "mb-4">Yigit's Store is a leading online store that offers a wide range of products at competitive prices. Our goal is to provide our customers with the best shopping experience possible. We offer a wide selection of products, including electronics, clothing, home goods, and more. Whether you're looking for the latest tech gadgets or stylish fashion accessories, you'll find it all at Yigit's Store. Shop with us today and experience the difference!</p>

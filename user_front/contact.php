@@ -11,25 +11,7 @@
         <link rel="stylesheet preload"    type="text/css"    href="style.css" as="style"> 
     </head>
     <body>
-        <nav id = "navbar" role = "navigation">
-            <div class = "navbar">
-                <div class = "navbarLogo">
-                    <a class = "navbarLogoImg"  href = "index.html"><img src = "Media/Logo.png" alt = "Yigit's Shop Logo"></a>
-                    <a class = "navbarLogoText" href = "index.html">Yigit's Shop</a>
-                </div>
-                <div class="navItems">
-                    <a class = "navItem" href = "aboutUs.html">Hakkımızda</a>
-                    <a class = "navItem" href = "products.html">Ürünler</a>
-                    <a class = "navItem" href = "contact.html">İletişim</a>
-                    <a class = "navItem" href = "documents.html">Dökümanlar</a>
-                </div>
-                <div class = "callNowGroup">
-                    <img class = "callNowIcon"      src = "Media/NavBarCallIcon.png" alt = "CallIcon">
-                    <a   class = "navItem callNow"  href = "tel:+902166712200">Hemen Arayın</a>
-                </div>
-            </div>
-        </nav>
-
+        <?php include("navbar.php"); ?>
         <!-- <a id = "languageButton" href=""><p id = "languageButtonText" href = "">En</p></a> -->        
         
         <main role="main">

@@ -34,6 +34,13 @@
                         Edit Categories
                     </a>                
                 </li>
+
+                <li>             
+                    <a href="orders.php">
+                        <i class="fa fa-angle-double-right"></i>
+                        Orders
+                    </a>                
+                </li>
                             
                 <li class="dropdown">
                     <a href="javascript:;">
