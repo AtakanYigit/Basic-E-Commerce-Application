@@ -27,6 +27,13 @@
                         Add Product
                     </a>                
                 </li>
+
+                <li>             
+                    <a href="categories.php">
+                        <i class="fa fa-angle-double-right"></i>
+                        Edit Categories
+                    </a>                
+                </li>
                             
                 <li class="dropdown">
                     <a href="javascript:;">

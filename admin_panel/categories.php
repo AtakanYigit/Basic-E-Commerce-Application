@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <title>Yiğit Default Admin Add Product</title>
+        <title>Categories</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="">
@@ -24,23 +24,23 @@
 
         <div id="login-container">
             <div id="addProduct">
-                <a class = "btn btn-primary mt-4 mb-5" href="add_admin.php">Add New Admin</a>
-                <h1 class = "mb-3">Admins</h1>
-                <?php foreach(query_parser("SELECT * FROM admin_table") as $admin) { ?>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="w-100 d-flex flex-row justify-content-around">
-                                <p class="card-text"><span style = "font-weight: 800">Name</span>:      <?php echo $admin["admin_name"]; ?></p>
-                                <p class="card-text"><span style = "font-weight: 800">Surname</span>:   <?php echo $admin["admin_surname"]; ?></p>
-                                <p class="card-text"><span style = "font-weight: 800">User Name:</span> <?php echo $admin["admin_username"]; ?></p>
-                                <p class="card-text"><span style = "font-weight: 800">Password</span>:  <?php echo $admin["admin_pass"]; ?></p>
-                            </div>
-                            <div>
-                                <a href="edit_admin.php?id=<?php echo $admin["admin_id"]; ?>" class="btn btn-primary">Edit</a>
-                                <a href="delete_admin_service.php?id=<?php echo $admin["admin_id"]; ?>" class="btn btn-danger">Delete</a>
-                            </div>
+                <form action = "add_category_service.php" class = "width-100 d-flex flex-row mt-4 mb-5 justify-content-center gap-3" method = "POST">
+                    <input type="text" class = "form-control" name = "name" placeholder="Category Name">
+                    <input type = submit class = "btn btn-primary" href="add_category.php" value = "Add New Category"/>
+                </form>
+                <h1 class = "mb-3">Categories</h1>
+                
+                <?php foreach(query_parser("SELECT * FROM categories") as $category) { ?>
+                    <form class="card mb-4 card-body d-flex flex-row justify-content-between p-5 pt-3 pb-3 align-items-center" action = "update_category_service.php?id=<?php echo $category["id"]; ?>" method = "POST">
+                        <div class="d-flex flex-row gap-3 align-items-center">
+                            <h2 class="card-text"><?php echo $category["id"]; ?>- </h2>
+                            <input type="text" class = "form-control" name = "name" placeholder="Category Name" value = "<?php echo $category["name"]; ?>" style = "font-size: 18px; border: none; box-shadow: none">
                         </div>
-                    </div>
+                        <div class="d-flex flex-row gap-3 align-items-center">
+                            <input type = "submit" class="btn btn-warning" value = "Update"/>
+                            <a href="delete_category_service.php?id=<?php echo $category["id"]; ?>" class="btn btn-danger">Delete</a>
+                        </div>
+                    </form>
                 <?php } ?>
             </div>
         </div>

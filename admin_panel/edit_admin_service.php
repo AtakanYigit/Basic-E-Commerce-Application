@@ -25,13 +25,11 @@
         $surname     = $_POST['surname'];
         $user_name   = $_POST['userName'];
         $password    = $_POST['password'];
-        //Update Admin By Id
         $insertSql = "UPDATE admin_table SET admin_name = '$name', admin_surname = '$surname', admin_username = '$user_name', admin_pass = '$password' WHERE admin_id = $admin_id";
 
         if ($conn -> query ($insertSql)){
-            $result="<h2>*******Data insert success*******</h2>";
-            //navigate to dashboard.php
-            header("Location: /Basic-E-Commerce-Application/admin_panel/dashboard.php");
+            $result="<h2>Data insert success</h2>";
+            header("Location: /Basic-E-Commerce-Application/admin_panel/admin_list.php");
         }else{
             die($conn -> error);
         }

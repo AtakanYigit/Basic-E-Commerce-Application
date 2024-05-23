@@ -17,7 +17,7 @@
         if ($conn -> query ($insertSql)){
             $result="<h2>*******Data insert success*******</h2>";
             //navigate to dashboard.php
-            header("Location: dashboard.php");
+            header("Location: /Basic-E-Commerce-Application/admin_panel/admin_list.php");
         }else{
             die($conn -> error);
         }
