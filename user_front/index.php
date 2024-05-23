@@ -63,9 +63,10 @@
                         <div class = "card-body">
                             <h5 class = "card-title"><?php echo $product["name"]; ?></h5>
                             <p class = "card-text"><?php echo $product["description"]; ?></p>
+                            <p class = "card-text"><?php echo $product["price"]; ?>$</p>
                             <a class = "btn btn-primary"   href = "order.php/<?php echo $product["name"]; ?>">Buy Now</a>
                             <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Add to Cart</a>
-                            <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Details</a>
+                            <a class = "btn btn-secondary" href = "product_details.php?id=<?php echo $product["id"]; ?>">Details</a>
                         </div>
                     </div>
                 <?php } ?>

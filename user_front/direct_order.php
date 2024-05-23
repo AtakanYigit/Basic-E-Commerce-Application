@@ -51,20 +51,12 @@
     <body>
         <?php include("navbar.php"); ?>
         <main class = "p-5 pt-3">
-            <h1><?php echo $product["name"]; ?></h1>
-            <p class = "mb-4 width-50"><?php echo $product["description"]; ?></p>
             <div class = "d-flex flex-row justify-content-start gap-5">
                 <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" class = "w-25" alt = "<?php echo $product["name"]; ?>">
-                <form class = "d-flex flex-column justify-content-start gap-3" action = "direct_order.php?id=<?php echo $product["id"]; ?>" method = "POST">
-                    <p>Price: $<?php echo $product["price"]; ?></p>
-                    <p>Stock: <?php echo $product["quantity"]; ?></p>
-                    <p>Category: <?php query_parser("SELECT name FROM categories WHERE id = $product[category_id]")[0]["name"]; ?></p>
-                    <div class="mb-3">
-                        <label for="count_to_buy" class="form-label">How many would you like to buy?</label>
-                        <input type="number" name="count_to_buy" class="form-control" id="exampleInputName" value = "1" min = "1" max = "<?php echo $product["quantity"]; ?>">
-                    </div>
-                    <input type = "submit" class = "btn btn-primary" value = "Buy Now"/>
-                    <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Add to Cart</a>
+                <form class = "d-flex flex-column justify-content-start gap-3" action = "direct_order_service.php?id=<?php echo $product["id"]; ?>&count_to_buy=<?php echo $_POST['count_to_buy']; ?>" method = "POST">
+                    <p>Buying: <?php echo $_POST['count_to_buy']; ?></p>
+                    <p>Total Price: $<?php echo $_POST['count_to_buy'] * $product["price"]; ?>$</p>
+                    <input type = "submit" class = "btn btn-primary" value = "Confirm Purchase"/>
                 </form>
             </div>
         </main>
