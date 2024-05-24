@@ -74,16 +74,16 @@
             <?php
                 foreach (query_parser("SELECT p.* FROM products AS p INNER JOIN categories AS c ON p.category_id = c.id WHERE c.id = $category_id") as $product) {
                 ?>
-                <div class="card rounded" style="width: 20%;">
-                    <img src="data:image/png;base64,<?php echo base64_encode($product["image"]); ?>" class="card-img-top" alt="<?php echo $product["name"]; ?>">
-                    <div class="card-body">
-                    <h5 class="card-title"><?php echo $product["name"]; ?></h5>
-                    <p class="card-text"><?php echo $product["description"]; ?></p>
-                    <a href="#" class="btn btn-primary">Buy Now</a>
-                    <a href="#" class="btn btn-secondary">Add to Cart</a>
-                    <a href="#" class="btn btn-secondary">Details</a>
-                    </div>
-                </div>
+                    <form class = "card rounded" style = "width: 20%;" action = "direct_order.php?id=<?php echo $product["id"]; ?>" method = "POST">
+                        <img src="data:image/png;base64,<?php echo base64_encode($product["image"]); ?>" class="card-img-top" alt="<?php echo $product["name"]; ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $product["name"]; ?></h5>
+                            <p class="card-text"><?php echo $product["description"]; ?></p>
+                            <input type = "submit" class = "btn btn-primary" value = "Buy Now"/>
+                            <a href="#" class="btn btn-secondary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">Details</a>
+                        </div>
+                    </form>
                 <?php
                 }
                 ?>            

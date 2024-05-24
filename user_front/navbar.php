@@ -27,7 +27,7 @@
                     <a class = "nav-link" href = "/Basic-E-Commerce-Application/user_front/contact.php">Contact</a>
                 </li>
                 <li class = "nav-item">
-                    <a class = "nav-link" href = "/Basic-E-Commerce-Application/user_front/cart.php">Cart</a>
+                    <a class = "nav-link" href = "/Basic-E-Commerce-Application/user_front/cart.php">Cart (<?php echo count($_SESSION["cart"]); ?>)</a>
                 </li>
             </ul>
         </div>

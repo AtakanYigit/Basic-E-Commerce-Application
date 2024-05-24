@@ -1,42 +1,7 @@
 <?php 
-    session_start(); //--we started session--
     ini_set("display_errors", "1"); // 1 is on, 0 is off
     ini_set("display_startup_errors", "1"); // 1 is on, 0 is off
     error_reporting(E_ALL);
-    function query_parser($sql = "") {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "store_db";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-        if(empty($sql)) {
-            return "sql statement is empty";
-        }
-        $query_result = $conn->query($sql);
-        $array_result = [];
-        while($row = $query_result->fetch_assoc()) {
-            $array_result[] = $row;
-        }
-        return $array_result;
-    }
-
-    function insert_or_delete($sql = "") {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "store_db";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-        if(empty($sql)) {
-            return "sql statement is empty";
-        }
-        $query_result = $conn->query($sql);
-    }
 ?>
 
 <!DOCTYPE html> 
@@ -52,7 +17,34 @@
         <link rel = "stylesheet preload"    type = "text/css"    href = "style.css" as = "style"> 
     </head>
     <body>
+        <?php include("config.php"); ?>
+
+        <script>
+            const handle_add_to_cart_click = (e, id, count) =>{
+                e.preventDefault();
+                fetch("add_to_cart_service.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "id=" + id + "&count=" + count
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(response);
+                            location.reload();
+                        } else {
+                            throw new Error("Failed to add product to cart");
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("Failed to add product to cart")
+                    });
+                }
+        </script>
         <?php include("navbar.php"); ?>
+
         <main class = "ps-5 pt-3">
             <h1>Welcome to Yigit's Store</h1>
             <p class = "mb-4">Yigit's Store is a leading online store that offers a wide range of products at competitive prices. Our goal is to provide our customers with the best shopping experience possible. We offer a wide selection of products, including electronics, clothing, home goods, and more. Whether you're looking for the latest tech gadgets or stylish fashion accessories, you'll find it all at Yigit's Store. Shop with us today and experience the difference!</p>
@@ -64,12 +56,17 @@
                             <h5 class = "card-title"><?php echo $product["name"]; ?></h5>
                             <p class = "card-text"><?php echo $product["description"]; ?></p>
                             <p class = "card-text"><?php echo $product["price"]; ?>$</p>
-                            <input type = "submit" class = "btn btn-primary" value = "Buy Now"/>
-                            <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Add to Cart</a>
-                            <a class = "btn btn-secondary" href = "product_details.php?id=<?php echo $product["id"]; ?>">Details</a>
+                            <div class = "d-flex flex-row gap-3">
+                                <input type="number" name="count_to_buy_for_<?php echo $product["id"]?>" class="form-control w-50" id="exampleInputName" value="1" min = "1" max = "<?php echo $product["quantity"]; ?>">
+                                <button class="btn btn-secondary w-50" style = "white-space:nowrap" type="button" onclick = "handle_add_to_cart_click(event, <?php echo $product['id']; ?>, document.querySelector('input[name=count_to_buy_for_<?php echo $product['id']; ?>').value)">Add to Cart</button>
+                            </div>
+                            <div class = "d-flex flex-row gap-3 mt-2 gap-3 align-items-center w-100">
+                                <input type = "submit" class = "btn btn-primary w-50" value = "Buy Now"/>
+                                <a class = "btn btn-secondary w-50" href = "product_details.php?id=<?php echo $product["id"]; ?>">Details</a>
+                            </div>
                         </div>
                     </form>
-                    <?php } ?>
+                <?php } ?>
             </div>
         </main>
         <script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity = "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin = "anonymous"></script>
