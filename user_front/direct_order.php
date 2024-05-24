@@ -1,4 +1,6 @@
 <?php 
+    $count_to_buy = $_POST["count_to_buy"] || 1;
+
     function query_parser($sql = "") {
         $servername = "localhost";
         $username = "root";
@@ -53,9 +55,9 @@
         <main class = "p-5 pt-3">
             <div class = "d-flex flex-row justify-content-start gap-5">
                 <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" class = "w-25" alt = "<?php echo $product["name"]; ?>">
-                <form class = "d-flex flex-column justify-content-start gap-3" action = "direct_order_service.php?id=<?php echo $product["id"]; ?>&count_to_buy=<?php echo $_POST['count_to_buy']; ?>" method = "POST">
-                    <p>Buying: <?php echo $_POST['count_to_buy']; ?></p>
-                    <p>Total Price: $<?php echo $_POST['count_to_buy'] * $product["price"]; ?>$</p>
+                <form class = "d-flex flex-column justify-content-start gap-3" action = "direct_order_service.php?id=<?php echo $product["id"]; ?>&count_to_buy=<?php echo $count_to_buy; ?>" method = "POST">
+                    <p>Buying: <?php echo $count_to_buy; ?></p>
+                    <p>Total Price: $<?php echo $count_to_buy * $product["price"]; ?>$</p>
                     <input type = "submit" class = "btn btn-primary" value = "Confirm Purchase"/>
                 </form>
             </div>
