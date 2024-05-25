@@ -34,6 +34,7 @@
                                 <p class = "card-text" style = "text-decoration: none">Price: $<?php echo $product["price"]; ?></p>
                                 <p class = "card-text" style = "text-decoration: none">Quantity: <?php echo $product_quantity; ?></p>
                                 <p class = "card-text" style = "text-decoration: none">Total Price: $<?php echo $product["price"] * $product_quantity; ?></p>
+                                <button class = "btn btn-danger">Remove From Cart</button>
                             </div>
                         </div>
                     </div>
