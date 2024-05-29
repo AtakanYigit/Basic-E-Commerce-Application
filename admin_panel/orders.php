@@ -25,9 +25,43 @@
             <div id="addProduct">
                 <h1 class = "mt-5 mb-3">Orders</h1>
                 <?php foreach(query_parser("SELECT * FROM orders") as $order) { ?>
-                    <div class="card mb-4 card-body d-flex flex-row justify-content-between p-5 pt-3 pb-3 align-items-center" action = "update_category_service.php?id=<?php echo $category["id"]; ?>" method = "POST">
-                        <div class="d-flex flex-row gap-3 align-items-center">
-                            <h2 class="card-text"><?php echo $order["id"]; ?>- </h2>
+                    <div class="card mb-4 card-body d-flex flex-column justify-content-between p-3 pt-3 pb-3 align-items-center" action = "update_category_service.php?id=<?php echo $category["id"]; ?>" method = "POST">
+                        <p><span style = "font-weight: 700">Order ID:</span> <?php echo $order["id"]; ?></p>
+                        <p><span style = "font-weight: 700">Order Date:</span> <?php echo $order["created_at"]; ?></p>
+                        <p><span style = "font-weight: 700">Total Price: </span>
+                            <?php 
+                                $total_price = 0;
+                                foreach(query_parser("SELECT products.id as product_id, products.image as product_image, products.name as product_name, products.price as product_price, order_products.quantity as product_quantity FROM order_products INNER JOIN products ON order_products.product_id = products.id WHERE order_products.order_id = " . $order["id"]) as $product) {
+                                    $total_price += $product["product_price"] * $product["product_quantity"];
+                                }
+                                echo "$" . $total_price;
+                            ?>
+                        </p>
+                        <p><span style = "font-weight: 700">Shipping Info:</span>
+                        <br/>
+                            <?php 
+                                $shipment_info = query_parser("SELECT * FROM shipment_infos WHERE id = " . $order["shipment_info"])[0];
+                                echo $shipment_info["name"] . " " . $shipment_info["surname"] . "<br/>" . "Address: " . $shipment_info["address"] . "<br/>" . $shipment_info["telephone"];                                    
+                            ?>
+                        </p>
+                        <p class = "mt-3" style = "text-decoration: none"><span style = "font-weight: 700">Products:</span></p>
+                        <div class = "d-flex flex-column mt-3 gap-3" style = "text-decoration: none">
+                            <?php foreach(query_parser("SELECT products.id as product_id, products.image as product_image, products.name as product_name, products.price as product_price, order_products.quantity as product_quantity FROM order_products INNER JOIN products ON order_products.product_id = products.id WHERE order_products.order_id = " . $order["id"]) as $product) { ?>
+                                <a href = "/Basic-E-Commerce-Application/user_front/product_details.php?id=<?php echo $product["product_id"]; ?>" class = "card" style = "text-decoration: none">
+                                    <div class = "card-body">
+                                        <div class = "d-flex flex-row justify-content-start gap-5">
+                                            <img src = "data:image/png;base64, <?php echo base64_encode($product["product_image"]); ?>" style = "width: 160px">
+                                            <div>
+                                                <p class = "card-text" style = "text-decoration: none">Product: <?php echo $product["product_name"]; ?></p>
+                                                <p class = "card-text" style = "text-decoration: none">Price: $<?php echo $product["product_price"]; ?></p>
+                                                <p class = "card-text" style = "text-decoration: none">Quantity: <?php echo $product["product_quantity"]; ?></p>
+                                                <p class = "card-text" style = "text-decoration: none">Total Price: $<?php echo $product["product_price"] * $product["product_quantity"]; ?></p>
+                                                <p class = "card-text" style = "text-decoration: none">Each: $<?php echo $product["product_price"]?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } ?>
                         </div>
                     </div>
                 <?php } ?>
