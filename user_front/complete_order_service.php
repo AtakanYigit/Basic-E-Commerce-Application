@@ -10,8 +10,40 @@
     $dbname     = "store_db";
     $conn       = new mysqli($servername, $username, $password, $dbname);
 
+    //Create Shipping Info in shipment_infos table
+    echo '<pre>'; print_r($_SESSION["shipment_info"]); echo '</pre>';
+    $address = $_SESSION["shipment_info"][0]["address"];
+    $telephone = $_SESSION["shipment_info"][0]["telephone"];
+    $name = $_SESSION["shipment_info"][0]["name"];
+    $surname = $_SESSION["shipment_info"][0]["surname"];
+
+    $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname) VALUES ('$address', '$telephone', '$name', '$surname')";
+    if ($conn -> query ($insertShipmentInfo)){
+        $result="<h2>Shipment Info created</h2>";
+        $shipment_info_id = $conn->insert_id;
+        echo $result;
+    }else{
+        die($conn -> error);
+    }
+
+    //Create Billing Info in billing_infos table
+    $card_number = $_SESSION["payment_info"][0]["card_number"];
+    $card_holder = $_SESSION["payment_info"][0]["card_holder"];
+    $valid_month = $_SESSION["payment_info"][0]["valid_month"];
+    $valid_year = $_SESSION["payment_info"][0]["valid_year"];
+    $ccv = $_SESSION["payment_info"][0]["ccv"];
+
+    $insertBillingInfo = "INSERT INTO billing_infos (card_number, card_holder, valid_month, valid_year, ccv) VALUES ('$card_number', '$card_holder', '$valid_month', '$valid_year', '$ccv')";
+    if ($conn -> query ($insertBillingInfo)){
+        $result="<h2>Billing Info created</h2>";
+        $billing_info_id = $conn->insert_id;
+        echo $result;
+    }else{
+        die($conn -> error);
+    }
+
     //Create order in orders table
-    $insertOrder = "INSERT INTO orders (cargo_info, billing_info, created_at) VALUES ('Cargo Info Here', 'Billing Info Here', NOW())";
+    $insertOrder = "INSERT INTO orders (shipment_info, billing_info, created_at) VALUES ($shipment_info_id, $billing_info_id, NOW())";
     if ($conn -> query ($insertOrder)){
         $result="<h2>Order created</h2>";
         $order_id = $conn->insert_id;

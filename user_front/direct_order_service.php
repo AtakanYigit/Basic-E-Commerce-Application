@@ -26,8 +26,33 @@
     $dbname     = "store_db";
     $conn       = new mysqli($servername, $username, $password, $dbname);
 
+    //Create Shipping Info in shipment_infos table
+    $address = $_SESSION["shipment_info"][0]["address"];
+    $telephone = $_SESSION["shipment_info"][0]["telephone"];
+    $name = $_SESSION["shipment_info"][0]["name"];
+    $surname = $_SESSION["shipment_info"][0]["surname"];
+
+    $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname) VALUES ('$address', '$telephone', '$name', '$surname')";
+    if ($conn -> query ($insertShipmentInfo)){
+        $result="<h2>Shipment Info created</h2>";
+        $shipment_info_id = $conn->insert_id;
+        echo $result;
+    }else{
+        die($conn -> error);
+    }
+
+    //Create Shipping Info in shipment_infos table
+    $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname) VALUES ($_SESSION["shipment_info"][0]["address"], $_SESSION["shipment_info"][0]["telephone"], $_SESSION["shipment_info"][0]["name"], $_SESSION["shipment_info"][0]["surname"])";
+    if ($conn -> query ($insertShipmentInfo)){
+        $result="<h2>Shipment Info created</h2>";
+        $shipment_info_id = $conn->insert_id;
+        echo $result;
+    }else{
+        die($conn -> error);
+    }
+
     //Create order in orders table
-    $insertOrder = "INSERT INTO orders (cargo_info, billing_info, created_at) VALUES ('Cargo Info Here', 'Billing Info Here', NOW())";
+    $insertOrder = "INSERT INTO orders (shipment_info, billing_info, created_at) VALUES ($shipment_info_id, 'Billing Info Here', NOW())";
     if ($conn -> query ($insertOrder)){
         $result="<h2>Order created</h2>";
     }else{

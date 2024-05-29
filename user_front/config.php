@@ -4,6 +4,14 @@
         $_SESSION["cart"] = [];
     }   
 
+    if(!isset($_SESSION["shipment_info"])){
+        $_SESSION["shipment_info"] = [];
+    }   
+
+    if(!isset($_SESSION["payment_info"])){
+        $_SESSION["payment_info"] = [];
+    }   
+
     ini_set('display_errors', '1'); // 1 is on, 0 is off
     ini_set('display_startup_errors', '1'); // 1 is on, 0 is off
     error_reporting(E_ALL);
