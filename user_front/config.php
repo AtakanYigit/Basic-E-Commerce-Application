@@ -12,6 +12,10 @@
         $_SESSION["payment_info"] = [];
     }   
 
+    if(!isset($_SESSION["previous_orders"])){
+        $_SESSION["previous_orders"] = [];
+    }   
+
     ini_set('display_errors', '1'); // 1 is on, 0 is off
     ini_set('display_startup_errors', '1'); // 1 is on, 0 is off
     error_reporting(E_ALL);

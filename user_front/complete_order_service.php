@@ -75,7 +75,12 @@
         }
     }
 
-    echo $order_id;
+
+    // Get the previous orders from the session (initialize with empty array if not set)
+    $previousOrders = isset($_SESSION["previous_orders"]) ? $_SESSION["previous_orders"] : array();
+    array_push($previousOrders, $order_id);
+    $_SESSION["previous_orders"] = $previousOrders;
+
     $_SESSION["cart"] = [];
     header("Location: /Basic-E-Commerce-Application/user_front/order_completed.php?id=$order_id");
 ?>
