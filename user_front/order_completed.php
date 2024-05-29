@@ -1,24 +1,6 @@
-<?php 
-    function query_parser($sql = "") {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "store_db";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-        if(empty($sql)) {
-            return "sql statement is empty";
-        }
-        $query_result = $conn->query($sql);
-        $array_result = [];
-        while($row = $query_result->fetch_assoc()) {
-            $array_result[] = $row;
-        }
-        return $array_result;
-    }
+<?php include("config.php"); ?>
 
+<?php 
     $url = $_SERVER['REQUEST_URI'];
     $parsedUrl = parse_url($url);
 

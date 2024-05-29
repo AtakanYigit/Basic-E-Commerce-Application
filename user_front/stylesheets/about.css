@@ -1,0 +1,65 @@
+section{
+    width:                  80vw;
+    left:                   0;
+    right:                  0;
+    margin:                 80px auto 0;
+}
+
+h1{
+    font-size:              4rem;
+    font-weight:            500;
+}
+
+h2{
+    font-size:              3rem;
+    font-weight:            500;
+}
+
+p{
+    margin-top:             16px;
+    font-size:              1.6rem;
+    font-weight:            300;
+}
+
+em{
+    font-style:             normal;
+}
+
+@media screen and (max-width: 1400px){
+    section{
+        margin-top: 128px;
+    }
+
+    h1{
+        font-size:              3rem;
+    }
+
+    h2{
+        font-size:              2rem;
+    }
+
+    p{
+        margin-top:             0px;
+        font-size:              1.5rem;
+        font-weight:            300;
+    }
+
+    .paint{
+        margin:                 32px auto 0;
+    }
+}
+
+@media screen and (max-width: 900px){
+    section{
+        margin-top: 80px;
+    }
+
+    h1{
+        text-align:             center;
+    }
+
+    p{
+        margin-top:             16px;
+        font-weight:            300;
+    }
+}

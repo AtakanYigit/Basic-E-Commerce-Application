@@ -1,0 +1,121 @@
+/* ---Map--- */
+#map{
+    margin-top:             0;
+    text-align:             right;
+    height:                 45vh;
+    width:                  100vw;
+}
+
+.gmap_canvas {
+    overflow:               hidden;
+    background:             none!important;
+    height:                 45vh;
+    width:                  100vw;
+}
+
+#gmaps{
+    height:                 45vh;
+    width:                  100vw;
+}
+
+.fax a{
+    cursor: default;
+}
+
+main{
+    margin-bottom: 120px;
+}
+
+/* ---ContactInfo--- */
+
+.container{
+    width:                  80vw;
+    margin:                 64px auto -64px;
+    display:                grid;
+    grid-template:          auto auto / 1fr 1fr;
+    justify-items:          start;
+    align-items:            center;
+    justify-content:        center;
+    align-content:          center;
+}
+
+.contactInfo i{
+    max-width:              24px;
+    max-height:             24px;
+    margin-right:           16px;
+}
+
+.contactInfo a{
+    font-size:              1.5rem;
+    transition:             all .15s ease-in-out;
+    white-space:            nowrap;
+    text-decoration:        none;
+    color:                  black;
+}
+
+.contactInfo a:hover{
+    color:                  #FF6F00;
+}
+
+#adress{
+    margin-top:             24px;
+    line-height:            64px;
+}
+
+.adress img{
+    margin-top:             -104px;
+}
+
+.adress{
+    margin:                 64px 0 0 80px;
+}
+
+.phone2{
+    margin-left:            80px;
+}
+
+.contactInfo{
+    display:                flex;
+    align-items:            center;
+}
+
+@media screen and (max-width: 1100px){
+    .container{
+        display:                flex;
+        flex-direction:         column;
+        justify-content:        center;
+        align-items:            center;
+        width:                  90vw;
+        gap:                    64px;
+    }
+
+    .contactInfo{
+        margin:                 0 auto;
+    }
+
+    #adress{
+        margin-top:             0;
+        line-height:            2rem;
+    }
+    
+    .adress img{
+        margin-top:             0;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .container{
+        margin-top:             32px;
+        gap:                    32px;
+    }
+
+    .contactInfo a{
+        font-size:              1.2rem;
+    }
+    
+    .contactInfo img{
+        max-width:              16px;
+        max-height:             16px;
+        margin-right: 8px;
+    }
+}
