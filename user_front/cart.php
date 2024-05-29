@@ -16,19 +16,19 @@
         <main class = "p-5 pt-3">
             <h1>Your Cart!</h1>
             <p class = "mt-3" style = "text-decoration: none">Order Details:</p>
-            <?php foreach($_SESSION["cart"] as $cart_item) { ?>
+            <?php foreach($_SESSION["cart"] as $index=>$cart_item) { ?>
                 <?php 
                     $product_id = $cart_item[0];
                     $product_quantity = $cart_item[1];
                     $product = query_parser("SELECT * FROM products WHERE id = $product_id")[0];
                 ?>
                 
-                <a href = "/Basic-E-Commerce-Application/user_front/product_details.php?id=<?php echo $product["id"]; ?>" class = "card" style = "text-decoration: none">
-                    <div class = "card-body">
+                <div class = "card" style = "text-decoration: none">
+                    <form class = "card-body" action = "remove_from_cart_service.php<?php echo "?index=" . $index; ?>" method = "POST">
                         <div class = "d-flex flex-row justify-content-start gap-5">
-                            <div class = " d-flex justify-content-center align-items-center overflow-hidden" style = "width: 240px; border: 4px solid rgba(10, 62, 204, 0.15); border-radius: 5px; border-radius: 5px">
+                            <a href = "/Basic-E-Commerce-Application/user_front/product_details.php?id=<?php echo $product["id"]; ?>"  class = " d-flex justify-content-center align-items-center overflow-hidden" style = "width: 240px; border: 4px solid rgba(10, 62, 204, 0.15); border-radius: 5px; border-radius: 5px">
                                 <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" style = "object-fit: cover; width: 100%; height: 100%">
-                            </div>
+                            </a>
                             <div>
                                 <p class = "card-text" style = "text-decoration: none">Product: <?php echo $product["name"]; ?></p>
                                 <p class = "card-text" style = "text-decoration: none">Price: $<?php echo $product["price"]; ?></p>
@@ -37,8 +37,8 @@
                                 <button class = "btn btn-danger">Remove From Cart</button>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </form>
+            </div>
             <?php } ?>
             <!-- Total Price -->
             <?php 
