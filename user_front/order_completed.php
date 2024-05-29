@@ -52,6 +52,7 @@
                 </p>
             </div>
             <p class = "mt-3" style = "text-decoration: none">Order Details:</p>
+            <!-- Print $order_products  -->
             <?php foreach($order_products as $product) { ?>
                 <a href = "/Basic-E-Commerce-Application/user_front/product_details.php?id=<?php echo $product["product_id"]; ?>" class = "card" style = "text-decoration: none">
                     <div class = "card-body">

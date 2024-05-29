@@ -1,7 +1,7 @@
 <?php include("config.php"); ?>
 
 <?php 
-    $count_to_buy = $_POST["count_to_buy"] || 1;
+    $count_to_buy = $_POST["count_to_buy"] ?? 1;
 
     $url = $_SERVER['REQUEST_URI'];
     $parsedUrl = parse_url($url);
