@@ -97,7 +97,8 @@
             <p class = "mb-4">Yigit's Store is a leading online store that offers a wide range of products at competitive prices. Our goal is to provide our customers with the best shopping experience possible. We offer a wide selection of products, including electronics, clothing, home goods, and more. Whether you're looking for the latest tech gadgets or stylish fashion accessories, you'll find it all at Yigit's Store. Shop with us today and experience the difference!</p>
             <div class = "d-flex flex-row justify-content-center gap-5 w-100">
                 <div class = "d-flex justify-content-start gap-5 flex-wrap mb-5" style = "width: 85%">
-                    <?php foreach (query_parser("SELECT p.* FROM products AS p INNER JOIN categories AS c ON p.category_id = c.id WHERE c.id = $category_id") as $product) { ?>
+                <!-- Select product from product_categories with $category_id by product_id-->
+                    <?php foreach(query_parser("SELECT products.id, products.name, products.description, products.price, products.image, products.quantity FROM products INNER JOIN product_categories ON products.id = product_categories.product_id WHERE product_categories.category_id = $category_id") as $product) { ?>
                         <form class = "card rounded" style = "width: 20%;" action = "direct_order.php?id=<?php echo $product["id"]; ?>" method = "POST">
                             <a href = "product_details.php?id=<?php echo $product["id"]; ?>" class = "card-img-top justify-content-center align-items-start d-flex overflow-hidden" style = "height: 200px;">
                                 <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" style = "max-width: 100%" alt = "<?php echo $product["name"]; ?>">

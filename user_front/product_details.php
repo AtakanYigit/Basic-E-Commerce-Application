@@ -39,7 +39,14 @@
                 <form class = "d-flex flex-column justify-content-start gap-3" action = "direct_order.php?id=<?php echo $product["id"]; ?>" method = "POST">
                     <p>Price: $<?php echo $product["price"]; ?></p>
                     <p>Stock: <?php echo $product["quantity"]; ?></p>
-                    <p>Category: <?php query_parser("SELECT name FROM categories WHERE id = $product[category_id]")[0]["name"]; ?></p>
+                    <p>Categories: 
+                        <?php 
+                            $categories = query_parser("SELECT categories.name FROM categories INNER JOIN product_categories ON categories.id = product_categories.category_id WHERE product_categories.product_id = " . $product["id"]);
+                            foreach ($categories as $index => $category) {
+                                echo $category["name"] . ($index == count($categories) - 1 ? "" : ", ");
+                            }
+                        ?>
+                    </p>
                     <div class="mb-3">
                         <label for="count_to_buy" class="form-label">How many would you like to buy?</label>
                         <input type="number" name="count_to_buy" class="form-control" id="exampleInputName" value = "1" min = "1" max = "<?php echo $product["quantity"]; ?>">

@@ -20,38 +20,32 @@
         <?php include('top_bar.php'); ?>
         <?php include('left_sidebar.php'); ?>
         <div id="login-container">
-            <div id="logo">
-                <a href="admin_template/Theme/login.html">
-                    <img src="admin_template/Theme/img/logos/logo-login.png" alt="Logo" />
-                </a>
-            </div>
-
             <div id="addProduct">
-                <h3>Add Product</h3>
-                <form action="add_product_upload.php" method="post" enctype="multipart/form-data">
+                <h3 style = "color: white">Add Product</h3>
+                <form action="add_product_service.php" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="exampleInputName" class="form-label">Product Name</label>
+                        <label for="exampleInputName" class="form-label" style = "color: white">Product Name</label>
                         <input type="text" name="name" class="form-control" id="exampleInputName">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputType" class="form-label">category_id</label>
+                        <label for="exampleInputType" class="form-label" style = "color: white">Category ids (Comma Seperated)</label>
                         <input type="text" name="category_id"  class="form-control" id="exampleInputType">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputDescription" class="form-label">Description</label>
+                        <label for="exampleInputDescription" class="form-label" style = "color: white">Description</label>
                         <input type="text" name="description" class="form-control" id="exampleInputDescription">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputQuantity" class="form-label">Quantity</label>
+                        <label for="exampleInputQuantity" class="form-label" style = "color: white">Quantity</label>
                         <input type="number" name="quantity" class="form-control" id="exampleInputQuantity">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPrice" class="form-label">Price</label>
+                        <label for="exampleInputPrice" class="form-label" style = "color: white">Price</label>
                         <input type="Number" name="price" class="form-control" id="exampleInputPrice">
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label">Image</label>
-                        <input type="file" name="image" />
+                        <label for="image" class="form-label" style = "color: white">Image</label>
+                        <input type="file" name="image" style = "color: white"/>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </form>
