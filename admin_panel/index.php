@@ -27,7 +27,7 @@ include("config.php");
 
     <body>
 
-        <div id="login-container">
+        <div id="login-container" style = "min-height: 85vh">
 
             <div id="logo">
                 <a href="admin_template/Theme/login.html">

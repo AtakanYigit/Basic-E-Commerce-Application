@@ -83,6 +83,6 @@
             }
         }
 
-        // header("Location: products.php");
+        header("Location: dashboard.php");
     } 
 ?>

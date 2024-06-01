@@ -28,5 +28,5 @@
         $result = "Error deleting record: " . $conn->error;
     }
 
-    header("Location: /Basic-E-Commerce-Application/admin_panel/products.php");
+    header("Location: /Basic-E-Commerce-Application/admin_panel/dashboard.php");
 ?>

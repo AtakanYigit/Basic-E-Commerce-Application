@@ -45,7 +45,7 @@
     <body>
         <?php include('top_bar.php'); ?>
         <?php include('left_sidebar.php'); ?>
-        <div id="login-container">
+        <div id="login-container" style = "min-height: 85vh">
             <div id="addProduct">
                 <h3 style = "color: white">Add Product</h3>
                 <form action="product_edit_service.php?id=<?php echo $product_id; ?>" method="post" enctype="multipart/form-data">

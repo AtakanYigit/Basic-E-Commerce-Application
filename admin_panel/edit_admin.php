@@ -43,7 +43,7 @@
     <?php include('top_bar.php'); ?>
     <?php include('left_sidebar.php'); ?>
     <body>
-        <div id="login-container">
+        <div id="login-container" style = "min-height: 85vh">
             <div id="addProduct">
                 <h1>Edit Admin: <?php echo $admin_name ?></h1>
                 <form action="edit_admin_service.php/?id=<?php echo $admin_id ?>" method="post" enctype="multipart/form-data">
