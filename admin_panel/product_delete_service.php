@@ -20,8 +20,11 @@
         echo "No query string found in the URL";
     }
 
-    $sql = "DELETE FROM products WHERE id = $product_id";
-    
+    $sql = "DELETE FROM products, product_categories 
+            USING products
+            INNER JOIN product_categories ON products.id = product_categories.product_id
+            WHERE products.id = $product_id";
+
     if ($conn->query($sql) === TRUE) {
         $result = "Record deleted successfully";
     } else {

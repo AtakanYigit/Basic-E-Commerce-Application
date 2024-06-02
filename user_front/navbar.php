@@ -27,11 +27,17 @@
                     <a class = "nav-link" href = "/Basic-E-Commerce-Application/user_front/contact.php">Contact</a>
                 </li>
                 <li class = "nav-item">
+                    <i class="fa-solid fa-cart-shopping"></i>
                     <a class = "nav-link" href = "/Basic-E-Commerce-Application/user_front/cart.php">Cart (<?php echo count($_SESSION["cart"]); ?>)</a>
                 </li>
-                <li class = "nav-item">
-                    <a class = "nav-link" href = "/Basic-E-Commerce-Application/user_front/previous_orders.php">Previous Orders</a>
-                </li>
+                <?php
+                    if(isset($_SESSION["previous_orders"]) && count($_SESSION["previous_orders"]) > 0){
+                        echo '
+                        <li class = "nav-item">
+                            <a class = "nav-link" href = "/Basic-E-Commerce-Application/user_front/previous_orders.php">Previous Orders</a>
+                        </li>';                        
+                    }
+                ?>
             </ul>
         </div>
     </div>

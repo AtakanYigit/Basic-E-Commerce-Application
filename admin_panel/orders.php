@@ -73,6 +73,7 @@
                                 </a>
                             <?php } ?>
                         </div>
+                        <a href = "/Basic-E-Commerce-Application/admin_panel/order_delete_service.php?id=<?php echo $order["id"]; ?>" class = "btn btn-danger mt-3" style = "text-decoration: none">Delete Order</a>
                     </div>
                 <?php } ?>
             </div>

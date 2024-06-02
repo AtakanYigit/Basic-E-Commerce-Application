@@ -14,7 +14,7 @@
 
     if(!isset($_SESSION["previous_orders"])){
         $_SESSION["previous_orders"] = [];
-    }   
+    }
 
     ini_set('display_errors', '1'); // 1 is on, 0 is off
     ini_set('display_startup_errors', '1'); // 1 is on, 0 is off
@@ -64,5 +64,16 @@
 
         return $query_result;
 
+    }
+
+    //Check db if that order exists, if not remove from $_SESSION["previous_orders"]
+    if(isset($_SESSION["previous_orders"])){
+        foreach($_SESSION["previous_orders"] as $key => $order){
+            $sql = "SELECT * FROM orders WHERE id = $order";
+            $result = query_parser($sql);
+            if(empty($result)){
+                unset($_SESSION["previous_orders"][$key]);
+            }
+        }
     }
 ?>

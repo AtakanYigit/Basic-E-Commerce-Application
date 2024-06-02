@@ -15,18 +15,13 @@
         $encodedImage = null; // Set default value for $encodedImage
 
         if (isset($_FILES['image']) && !empty($_FILES['image']['tmp_name'])){
-            $image = file_get_contents($_FILES['image']['tmp_name']);
-            $encodedImage = base64_encode($image);
+            $encodedImage = file_get_contents($_FILES['image']['tmp_name']);
         }
 
         // Insert the product into the database
-        $product_insert_sql = "INSERT INTO products(name, description, quantity, price, image) VALUES ('$name', '$description',$quantity, $price, '$encodedImage')";
-
-        if ($conn -> query ($product_insert_sql)){
-            $result="<h2>*******Data insert success*******</h2>";
-        }else{
-            die($conn -> error);
-        }
+        $stmt = $conn->prepare("INSERT INTO products(name, description, quantity, price, image) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $name, $description, $quantity, $price, $encodedImage);
+        $stmt->execute();
 
         //Create categories in product_categories table
         $category_id = explode(",", $_POST['category_id']);
@@ -44,7 +39,6 @@
                 die($conn -> error);
             }
         }
-
         header("Location: dashboard.php");
     } 
 ?>
