@@ -25,19 +25,19 @@
             <section class = "container">
                 <div class = "contactInfo">
                     <i class="fa fa-phone fa-lg"></i>
-                    <a  href = "tel:+902166712200">+90 (216) 671 22 00 pbx</a>
+                    <a  href = "tel:+905545978881">+90 554 597 88 81</a>
                 </div>
                 <div class = "contactInfo phone2">
                     <i class="fa fa-phone fa-lg"></i>
-                    <a  href = "tel:+905352221406">+90 (535) 222 14 06 - Kerem Atamer</a>
+                    <a  href = "tel:+905545978882">+90 554 597 88 82</a>
                 </div>
                 <div class = "contactInfo">
                     <i class="fa fa-envelope fa-lg"></i>
-                    <a  href = "mailto:k.atamer@promaksteknik.com">b.cengeloglu@promaksteknik.com</a>
+                    <a  href = "mailto:atakanyigit72@gmail.com">atakanyigit72@gmail.com</a>
                 </div>
                 <div class = "contactInfo adress">
                     <i class="fa fa-home fa-lg"></i>
-                    <a id="adress" href = "https://goo.gl/maps/HVyUDn9opKHwWP27A">Küçükyalı İş Merkezi<br> Girne Mah. Irmaklar Sok. G35 <br>Maltepe/İstanbul</a>
+                    <a id="adress" href = "https://goo.gl/maps/HVyUDn9opKHwWP27A">Maltepe Üniversity<br>Maltepe/İstanbul</a>
                 </div>
             </section>
         </main>
