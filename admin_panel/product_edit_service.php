@@ -28,9 +28,6 @@
             $encodedImage = base64_encode($image);
         }
 
-        echo $encodedImage;
-        
-
         $url = $_SERVER['REQUEST_URI'];
         $parsedUrl = parse_url($url);
     

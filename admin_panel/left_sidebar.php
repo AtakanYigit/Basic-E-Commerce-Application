@@ -6,7 +6,7 @@
                 <li class="active">             
                     <a href="dashboard.php">
                         <i class="fa fa-angle-double-right"></i>
-                        DASHBOARD
+                        Products
                     </a>                
                 </li>
 
@@ -34,7 +34,7 @@
                 <li class="dropdown">
                     <a href="javascript:;">
                         <i class="fa fa-angle-double-right"></i>
-                        ADMIN MANAGEMENT
+                        Admin Management
                         <span class="caret"></span>
                     </a>                
                     
@@ -42,13 +42,13 @@
                         <li>
                             <a href="add_admin.php">
                                 <i class="fa fa-angle-double-right"></i> 
-                                ADD NEW ADMIN
+                                Add New Admin
                             </a>
                         </li>
                         <li>
                             <a href="admin_list.php">
                                 <i class="fa fa-angle-double-right"></i> 
-                                ADMIN LIST
+                                Admin List
                             </a>
                         </li>
                     </ul>                       

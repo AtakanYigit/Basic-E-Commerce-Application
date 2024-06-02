@@ -45,6 +45,15 @@
                                 echo $shipment_info["name"] . " " . $shipment_info["surname"] . "<br/>" . "Address: " . $shipment_info["address"] . "<br/>" . $shipment_info["telephone"];                                    
                             ?>
                         </p>
+                        <p style = "color: white"><span style = "font-weight: 700">Billing Info:</span>
+                        <br/>
+                            <?php 
+                                $billing_info = query_parser("SELECT * FROM billing_infos WHERE id = " . $order["billing_info"])[0];
+                                echo $billing_info["card_number"] . "<br/>" . 
+                                $billing_info["card_holder"] . "<br/>" . 
+                                $billing_info["valid_month"] . "/" . $billing_info["valid_year"];                                    
+                            ?>
+                        </p>
                         <p class = "mt-3" style = "text-decoration: none; color: white"><span style = "font-weight: 700">Products:</span></p>
                         <div class = "d-flex flex-column mt-3 gap-3 w-100" style = "text-decoration: none">
                             <?php foreach(query_parser("SELECT products.id as product_id, products.image as product_image, products.name as product_name, products.price as product_price, order_products.quantity as product_quantity FROM order_products INNER JOIN products ON order_products.product_id = products.id WHERE order_products.order_id = " . $order["id"]) as $product) { ?>

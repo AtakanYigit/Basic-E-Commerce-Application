@@ -1,7 +1,7 @@
 <footer id="footer">
     <ul class="nav pull-right">
         <li>
-            Copyright &copy; 2013, Jumpstart Themes.
+            Copyright &copy; 2024, Yigit's Store
         </li>
     </ul>
 </footer>

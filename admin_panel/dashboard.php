@@ -25,7 +25,7 @@
 
         <div id="login-container" style = "min-height: 85vh">
             <div id="addProduct">
-            <h1 style = "color: white">Welcome to Dashboad, <?php echo $_SESSION['admin_username']; ?></h1>
+            <h1 style = "color: white">Welcome, <?php echo $_SESSION['admin_username']; ?></h1>
             <h3 style = "color: white">Products</h3>
             <div class = "d-flex flex-row justify-content-center gap-5" style = "width: 800px">
                 <div class = "d-flex justify-content-start gap-5 flex-wrap mb-5" style = "width: 100%">
