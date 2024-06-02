@@ -1,43 +1,5 @@
-<?php 
-    session_start(); //--we started session--
-    ini_set("display_errors", "1"); // 1 is on, 0 is off
-    ini_set("display_startup_errors", "1"); // 1 is on, 0 is off
-    error_reporting(E_ALL);
-    function query_parser($sql = "") {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "store_db";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-        if(empty($sql)) {
-            return "sql statement is empty";
-        }
-        $query_result = $conn->query($sql);
-        $array_result = [];
-        while($row = $query_result->fetch_assoc()) {
-            $array_result[] = $row;
-        }
-        return $array_result;
-    }
-
-    function insert_or_delete($sql = "") {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "store_db";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-        if(empty($sql)) {
-            return "sql statement is empty";
-        }
-        $query_result = $conn->query($sql);
-    }
-
+<?php include("config.php"); ?>
+<?php
     $url = $_SERVER['REQUEST_URI'];
     $parsedUrl = parse_url($url);
 
@@ -93,10 +55,9 @@
         </script>
 
         <main class = "ps-5 pt-3 mb-5">
-            <h1>Welcome to Yigit's Store</h1>
-            <p class = "mb-4">Yigit's Store is a leading online store that offers a wide range of products at competitive prices. Our goal is to provide our customers with the best shopping experience possible. We offer a wide selection of products, including electronics, clothing, home goods, and more. Whether you're looking for the latest tech gadgets or stylish fashion accessories, you'll find it all at Yigit's Store. Shop with us today and experience the difference!</p>
+            <h1 class = "mb-5">You are viewing "<?php echo query_parser("SELECT name FROM categories WHERE id = $category_id")[0]["name"]; ?>"</h1>
             <div class = "d-flex flex-row justify-content-center gap-5 w-100">
-                <div class = "d-flex justify-content-start gap-5 flex-wrap mb-5" style = "width: 85%">
+                <div class = "d-flex justify-content-start gap-5 flex-wrap mb-5" style = "width: 100%">
                     <?php if(count(query_parser("SELECT products.id FROM products INNER JOIN product_categories ON products.id = product_categories.product_id WHERE product_categories.category_id = $category_id")) == 0) echo'<h2>No products found</h2>';?>                
                     <?php foreach(query_parser("SELECT products.id, products.name, products.description, products.price, products.image, products.quantity FROM products INNER JOIN product_categories ON products.id = product_categories.product_id WHERE product_categories.category_id = $category_id") as $product) { ?>
                         <form class = "card rounded" style = "width: 20%;" action = "direct_order.php?id=<?php echo $product["id"]; ?>" method = "POST">

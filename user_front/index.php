@@ -48,11 +48,17 @@
 
         <main class = "px-5 pt-3">
             <h1>Welcome to Yigit's Store</h1>
-            <p class = "mb-4">Yigit's Store is a leading online store that offers a wide range of products at competitive prices. Our goal is to provide our customers with the best shopping experience possible. We offer a wide selection of products, including electronics, clothing, home goods, and more. Whether you're looking for the latest tech gadgets or stylish fashion accessories, you'll find it all at Yigit's Store. Shop with us today and experience the difference!</p>
+            <p class = "mb-4">
+                Ditch the traditional store experience! Yigit's Store isn't about aisles and products - we're all about awesome online courses to level you up.
+                Our courses are designed to empower you. 
+                Whether you're yearning to land your dream job and take your career to the next level, seeking to master a new hobby and ignite a hidden passion, or looking to boost your creative skills and unlock hidden talents, we have the course for you.
+                At Yigit's Store, we believe that learning should be accessible and enriching, and our courses provide a springboard for personal and professional growth, all at your own pace and convenience.
+            </p>
             <div class = "d-flex flex-row justify-content-center gap-5 w-100">
-                <div class = "d-flex justify-content-start gap-5 flex-wrap mb-5" style = "width: 85%">
+                <div class = "d-flex justify-content-start gap-5 flex-wrap mb-5" style = "width: 100%">
                     <?php if(count(query_parser("SELECT * FROM products")) == 0) echo'<h2>No products found</h2>';?>
                     <?php foreach(query_parser("SELECT * FROM products") as $product) { ?>
+                        <?php if($product["quantity"] == 0) continue; ?>
                         <form class = "card rounded" style = "width: 20%;" action = "direct_order.php?id=<?php echo $product["id"]; ?>" method = "POST">
                             <a href = "product_details.php?id=<?php echo $product["id"]; ?>" class = "card-img-top justify-content-center align-items-start d-flex overflow-hidden" style = "height: 200px;">
                                 <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" style = "max-width: 100%" alt = "<?php echo $product["name"]; ?>">

@@ -23,7 +23,7 @@
         <?php include('top_bar.php'); ?>
         <?php include('left_sidebar.php'); ?>
 
-        <div id="login-container" style = "min-height: 85vh; min-width: 98vw">
+        <div id="login-container" style = "min-height: 85vh; min-width: 50vw">
             <h1 style = "color: white; margin-top:32px">Welcome, <?php echo $_SESSION['admin_username']; ?></h1>
             <h3 style = "color: white">Products</h3>
             <?php 
