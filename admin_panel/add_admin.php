@@ -8,7 +8,6 @@
         <meta name="description" content="">
         <meta name="author" content="" />
         <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel = "stylesheet" integrity = "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin = "anonymous">
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,800italic,400,600,800" type="text/css">
         <link rel="stylesheet" href="admin_template/Theme/css/font-awesome.min.css" type="text/css" />     
         <link rel="stylesheet" href="admin_template/Theme/css/bootstrap.min.css" type="text/css" />    
         <link rel="stylesheet" href="admin_template/Theme/js/libs/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css" />  
@@ -23,22 +22,22 @@
         
         <div id="login-container" style = "min-height: 85vh">
             <div id="addProduct">
-                <h3>Add New Admin</h3>
+                <h3 style="color:white; margin-top:32px">Add New Admin</h3>
                 <form action="add_admin_service.php" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="exampleInputName" class="form-label">Admin Name</label>
+                        <label for="exampleInputName" class="form-label" style="color:white">Admin Name</label>
                         <input type="text" name="name" class="form-control" id="exampleInputName">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputType" class="form-label">Admin Surname</label>
+                        <label for="exampleInputType" class="form-label" style="color:white">Admin Surname</label>
                         <input type="text" name="surname"  class="form-control" id="exampleInputType">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputDescription" class="form-label">User Name</label>
+                        <label for="exampleInputDescription" class="form-label" style="color:white">User Name</label>
                         <input type="text" name="userName" class="form-control" id="exampleInputDescription">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputQuantity" class="form-label">Password</label>
+                        <label for="exampleInputQuantity" class="form-label" style="color:white">Password</label>
                         <input type="text" name="password" class="form-control" id="exampleInputQuantity">
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>

@@ -23,7 +23,7 @@
         <?php include('left_sidebar.php'); ?>
 
         <div id="login-container" style = "min-height: 85vh">
-            <div id="addProduct">
+            <div id="addProduct" style = "margin-top:32px">
                 <form action = "add_category_service.php" class = "width-100 d-flex flex-row mt-4 mb-5 justify-content-center gap-3" method = "POST">
                     <input type="text" class = "form-control" name = "name" placeholder="Category Name">
                     <input type = submit class = "btn btn-primary" href="add_category.php" value = "Add New Category"/>

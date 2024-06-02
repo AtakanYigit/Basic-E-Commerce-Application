@@ -21,7 +21,7 @@
         <?php include('top_bar.php'); ?>
         <?php include('left_sidebar.php'); ?>
 
-        <div id="login-container" style = "min-height: 85vh">
+        <div id="login-container" style = "min-height: 85vh; margin-top:32px">
             <div id="addProduct">
                 <a class = "btn btn-primary mt-4 mb-5" href="add_admin.php">Add New Admin</a>
                 <h1 class = "mb-3"style = "color: white">Admins</h1>

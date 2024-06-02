@@ -51,6 +51,7 @@
             <p class = "mb-4">Yigit's Store is a leading online store that offers a wide range of products at competitive prices. Our goal is to provide our customers with the best shopping experience possible. We offer a wide selection of products, including electronics, clothing, home goods, and more. Whether you're looking for the latest tech gadgets or stylish fashion accessories, you'll find it all at Yigit's Store. Shop with us today and experience the difference!</p>
             <div class = "d-flex flex-row justify-content-center gap-5 w-100">
                 <div class = "d-flex justify-content-start gap-5 flex-wrap mb-5" style = "width: 85%">
+                    <?php if(count(query_parser("SELECT * FROM products")) == 0) echo'<h2>No products found</h2>';?>
                     <?php foreach(query_parser("SELECT * FROM products") as $product) { ?>
                         <form class = "card rounded" style = "width: 20%;" action = "direct_order.php?id=<?php echo $product["id"]; ?>" method = "POST">
                             <a href = "product_details.php?id=<?php echo $product["id"]; ?>" class = "card-img-top justify-content-center align-items-start d-flex overflow-hidden" style = "height: 200px;">

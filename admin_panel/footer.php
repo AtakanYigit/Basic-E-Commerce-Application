@@ -6,7 +6,7 @@
     </ul>
 </footer>
 
-<script src="admin_template/Theme/js/libs/jquery-1.9.1.min.js"></script>
+<!-- <script src="admin_template/Theme/js/libs/jquery-1.9.1.min.js"></script>
 <script src="admin_template/Theme/js/libs/jquery-ui-1.9.2.custom.min.js"></script>
 <script src="admin_template/Theme/js/libs/bootstrap.min.js"></script>
 
@@ -27,4 +27,4 @@
 <script src="admin_template/Theme/js/plugins/fullcalendar/fullcalendar.min.js"></script>
 <script src="admin_template/Theme/js/demos/calendar.js"></script>
 
-<script src="admin_template/Theme/js/demos/dashboard.js"></script>
+<script src="admin_template/Theme/js/demos/dashboard.js"></script> -->
