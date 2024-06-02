@@ -1,3 +1,4 @@
+<?php include("config.php"); ?>
 <?php
     $result = null;
     $servername = "localhost";
@@ -20,16 +21,11 @@
         echo "No query string found in the URL";
     }
 
-    $sql = "DELETE FROM products, product_categories 
-            USING products
-            INNER JOIN product_categories ON products.id = product_categories.product_id
-            WHERE products.id = $product_id";
+    $delete_product_sql = "DELETE FROM products WHERE id = $product_id";
+    $delete_product_categories_sql = "DELETE FROM product_categories WHERE product_id = $product_id";
 
-    if ($conn->query($sql) === TRUE) {
-        $result = "Record deleted successfully";
-    } else {
-        $result = "Error deleting record: " . $conn->error;
-    }
+    $result = insert_or_delete($delete_product_sql);
+    $result = insert_or_delete($delete_product_categories_sql);
 
     header("Location: /Basic-E-Commerce-Application/admin_panel/dashboard.php");
 ?>

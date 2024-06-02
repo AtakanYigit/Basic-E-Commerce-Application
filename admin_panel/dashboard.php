@@ -27,6 +27,11 @@
             <div id="addProduct">
             <h1 style = "color: white">Welcome, <?php echo $_SESSION['admin_username']; ?></h1>
             <h3 style = "color: white">Products</h3>
+            <?php 
+                $product_count = count(query_parser("SELECT * FROM products"));
+                if($product_count == 0) echo "<h4 style = 'color: white'>No products found</h4>";
+                else echo "<h4 style = 'color: white'>Total Products: $product_count</h4>";
+            ?>
             <div class = "d-flex flex-row justify-content-center gap-5" style = "width: 800px">
                 <div class = "d-flex justify-content-start gap-5 flex-wrap mb-5" style = "width: 100%">
                     <?php foreach(query_parser("SELECT * FROM products") as $product) { ?>
