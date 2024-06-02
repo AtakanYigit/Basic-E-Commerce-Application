@@ -12,10 +12,10 @@
 
     //Create Shipping Info in shipment_infos table
     echo '<pre>'; print_r($_SESSION["shipment_info"]); echo '</pre>';
-    $address = $_SESSION["shipment_info"][0]["address"];
+    $address   = $_SESSION["shipment_info"][0]["address"];
     $telephone = $_SESSION["shipment_info"][0]["telephone"];
-    $name = $_SESSION["shipment_info"][0]["name"];
-    $surname = $_SESSION["shipment_info"][0]["surname"];
+    $name      = $_SESSION["shipment_info"][0]["name"];
+    $surname   = $_SESSION["shipment_info"][0]["surname"];
 
     $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname) VALUES ('$address', '$telephone', '$name', '$surname')";
     if ($conn -> query ($insertShipmentInfo)){
@@ -30,8 +30,8 @@
     $card_number = $_SESSION["payment_info"][0]["card_number"];
     $card_holder = $_SESSION["payment_info"][0]["card_holder"];
     $valid_month = $_SESSION["payment_info"][0]["valid_month"];
-    $valid_year = $_SESSION["payment_info"][0]["valid_year"];
-    $ccv = $_SESSION["payment_info"][0]["ccv"];
+    $valid_year  = $_SESSION["payment_info"][0]["valid_year"];
+    $ccv         = $_SESSION["payment_info"][0]["ccv"];
 
     $insertBillingInfo = "INSERT INTO billing_infos (card_number, card_holder, valid_month, valid_year, ccv) VALUES ('$card_number', '$card_holder', '$valid_month', '$valid_year', '$ccv')";
     if ($conn -> query ($insertBillingInfo)){
@@ -52,9 +52,9 @@
         die($conn -> error);
     }
 
-    foreach($_SESSION["cart"] as $cart_item){
-        $product_id = $cart_item[0];
-        $count_to_buy = $cart_item[1];
+    if(isset($_SESSION["direct_order_info"]) && !empty($_SESSION["direct_order_info"])){
+        $product_id = $_SESSION["direct_order_info"]["id"];
+        $count_to_buy = $_SESSION["direct_order_info"]["count_to_buy"];
 
         //Create order_product in order_products table and link the order_product to the order
         $insertOrderProduct = "INSERT INTO order_products (product_id, order_id, quantity) VALUES ($product_id, $order_id, $count_to_buy)";
@@ -73,14 +73,40 @@
         }else{
             die($conn -> error);
         }
-    }
+    }else if(isset($_SESSION["cart"]) && !empty($_SESSION["cart"])){
+        foreach($_SESSION["cart"] as $cart_item){
+            $product_id = $cart_item[0];
+            $count_to_buy = $cart_item[1];
 
+            //Create order_product in order_products table and link the order_product to the order
+            $insertOrderProduct = "INSERT INTO order_products (product_id, order_id, quantity) VALUES ($product_id, $order_id, $count_to_buy)";
+            if ($conn -> query ($insertOrderProduct)){
+                $result="<h2>Order Product created</h2>";
+                echo $result;
+            }else{
+                die($conn -> error);
+            }
+
+            //Reduce the quantity of the product
+            $updateProduct = "UPDATE products SET quantity = quantity - $count_to_buy WHERE id = $product_id";
+            if ($conn -> query ($updateProduct)){
+                $result="<h2>Product quantity updated</h2>";
+                echo $result;
+            }else{
+                die($conn -> error);
+            }
+        }
+
+        $_SESSION["cart"] = [];
+    }else{
+        echo "No product found to buy";
+    }
 
     // Get the previous orders from the session (initialize with empty array if not set)
     $previousOrders = isset($_SESSION["previous_orders"]) ? $_SESSION["previous_orders"] : array();
     array_push($previousOrders, $order_id);
     $_SESSION["previous_orders"] = $previousOrders;
 
-    $_SESSION["cart"] = [];
+    $_SESSION["direct_order_info"] = [];
     header("Location: /Basic-E-Commerce-Application/user_front/order_completed.php?id=$order_id");
 ?>

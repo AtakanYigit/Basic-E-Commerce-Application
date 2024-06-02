@@ -22,19 +22,19 @@
                         <div class = "smtn">
                             <div class="inputBox">
                                 <span>Card Number</span>
-                                <input type="text" placeholder="0123 456 78901 2345" maxlength="19" required autocomplete="off" name = "card_number" value = "<?php echo $_SESSION["payment_info"]["card_number"] ?? "" ?>">
+                                <input type="text" placeholder="0123 456 78901 2345" maxlength="19" required autocomplete="off" name = "card_number" value = "<?php echo $_SESSION["payment_info"][0]["card_number"] ?? "" ?>">
                             </div>
                             <div class="inputBox">
                                 <span>Card Holder</span>
-                                <input type="text" placeholder="Yigit" required autocomplete="off" name = "card_holder" value = "<?php echo $_SESSION["payment_info"]["card_holder"] ?? "" ?>">
+                                <input type="text" placeholder="Yigit" required autocomplete="off" name = "card_holder" value = "<?php echo $_SESSION["payment_info"][0]["card_holder"] ?? "" ?>">
                             </div>
                             <div class="group">
                                 <div class="inputBox">
                                     <span>Valid Thru</span>
                                     <div class = "d-flex flex-row gap-1 align-items-center justify-content-center">
-                                        <input type="text" placeholder="MM" maxlength="2" required autocomplete="off" style = "width: 32px" required name = "valid_month" value = "<?php echo $_SESSION["payment_info"]["valid_month"] ?? "" ?>">
+                                        <input type="text" placeholder="MM" maxlength="2" required autocomplete="off" style = "width: 32px" required name = "valid_month" value = "<?php echo $_SESSION["payment_info"][0]["valid_month"] ?? "" ?>">
                                         /
-                                        <input type="text" placeholder="YY" maxlength="2" required autocomplete="off" style = "width: 32px" required name = "valid_year" value = "<?php echo $_SESSION["payment_info"]["valid_year"] ?? "" ?>">
+                                        <input type="text" placeholder="YY" maxlength="2" required autocomplete="off" style = "width: 32px" required name = "valid_year" value = "<?php echo $_SESSION["payment_info"][0]["valid_year"] ?? "" ?>">
                                     </div>
                                 </div>
                                 <div class="inputBox">
@@ -48,7 +48,6 @@
                 </form>
             </div>
         </div>
-        
         <script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity = "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin = "anonymous"></script>
         <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity = "sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin = "anonymous"></script>
         <?php include("footer.php"); ?>

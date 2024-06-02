@@ -27,10 +27,10 @@
     $conn       = new mysqli($servername, $username, $password, $dbname);
 
     //Create Shipping Info in shipment_infos table
-    $address = $_SESSION["shipment_info"][0]["address"];
+    $address   = $_SESSION["shipment_info"][0]["address"];
     $telephone = $_SESSION["shipment_info"][0]["telephone"];
-    $name = $_SESSION["shipment_info"][0]["name"];
-    $surname = $_SESSION["shipment_info"][0]["surname"];
+    $name      = $_SESSION["shipment_info"][0]["name"];
+    $surname   = $_SESSION["shipment_info"][0]["surname"];
 
     $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname) VALUES ('$address', '$telephone', '$name', '$surname')";
     if ($conn -> query ($insertShipmentInfo)){
@@ -63,7 +63,6 @@
     $insertOrderProduct = "INSERT INTO order_products (product_id, order_id, quantity) VALUES ($product_id, LAST_INSERT_ID(), $count_to_buy)";
     if ($conn -> query ($insertOrderProduct)){
         $last_id = $conn->insert_id;
-
         $result="<h2>Order Product created</h2>";
     }else{
         die($conn -> error);

@@ -13,6 +13,16 @@
     </head>
     <body>
         <?php include("navbar.php"); ?>
+        <script>
+            const handle_proceed = (e) => {
+                <?php 
+                    $_SESSION["direct_order_info"] = [];
+                ?>
+
+                location.href = "/Basic-E-Commerce-Application/user_front/cargo_detail.php";
+            }
+        </script>
+
         <main class = "p-5 pt-3">
             <h1>Your Cart!</h1>
             <p class = "mt-3" style = "text-decoration: none">Order Details:</p>
@@ -51,7 +61,7 @@
                 }
                 echo "<p class = 'mt-3'>Total Price: $" . $total_price . "</p>";
             ?>
-            <a href = "/Basic-E-Commerce-Application/user_front/cargo_detail.php" class = "btn btn-primary mb-5">Proceed to Shipment</a>
+            <button onclick = "handle_proceed()" class = "btn btn-primary">Proceed To Shipment</button>
         </main>
         <script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity = "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin = "anonymous"></script>
         <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity = "sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin = "anonymous"></script>

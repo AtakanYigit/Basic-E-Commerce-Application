@@ -13,11 +13,13 @@
     </head>
     <body>
         <?php include("navbar.php"); ?>
+            <?php echo "<script>console.log('".json_encode($_SESSION["shipment_info"])."')</script>"; ?>
+
             <form action = "/Basic-E-Commerce-Application/user_front/shipment_info_save_service.php" method = "POST" class = "p-5 pt-3 d-flex flex-column gap-3" style = "height: 86vh">
-                <input type="text" placeholder = "Address" required  class = "form-control" style = "font-size:24px" name = "address" value = "<?php echo $_SESSION["shipment_info"]["address"] ?? "" ?>">
-                <input type="text" placeholder = "Telephone" required class = "form-control" style = "font-size:24px" name = "telephone" value = "<?php echo $_SESSION["shipment_info"]["telephone"] ?? "" ?>">
-                <input type="text" placeholder = "Name" required class = "form-control" style = "font-size:24px" name = "name" value = "<?php echo $_SESSION["shipment_info"]["name"] ?? "" ?>">
-                <input type="text" placeholder = "Surname" required class = "form-control" style = "font-size:24px" name = "surname" value = "<?php echo $_SESSION["shipment_info"]["surname"] ?? "" ?>">
+                <input type="text" placeholder = "Address" required  class = "form-control" style = "font-size:24px" name = "address" value = "<?php echo $_SESSION["shipment_info"][0]["address"] ?? "" ?>">
+                <input type="text" placeholder = "Telephone" required class = "form-control" style = "font-size:24px" name = "telephone" value = "<?php echo $_SESSION["shipment_info"][0]["telephone"] ?? "" ?>">
+                <input type="text" placeholder = "Name" required class = "form-control" style = "font-size:24px" name = "name" value = "<?php echo $_SESSION["shipment_info"][0]["name"] ?? "" ?>">
+                <input type="text" placeholder = "Surname" required class = "form-control" style = "font-size:24px" name = "surname" value = "<?php echo $_SESSION["shipment_info"][0]["surname"] ?? "" ?>">
                 <button class = "btn btn-primary mb-5" style = "font-size:24px">Proceed to Payment</button>
             </form>
             <script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity = "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin = "anonymous"></script>

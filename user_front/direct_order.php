@@ -1,8 +1,6 @@
 <?php include("config.php"); ?>
 
 <?php 
-    $count_to_buy = $_POST["count_to_buy"] ?? 1;
-
     $url = $_SERVER['REQUEST_URI'];
     $parsedUrl = parse_url($url);
 
@@ -18,6 +16,10 @@
     }
 
     $product = query_parser("SELECT * FROM products WHERE id = $product_id")[0];
+
+    $count_to_buy = $_POST["count_to_buy"] ?? $_POST["count_to_buy_for_$product_id"] ?? 1;
+
+    $direct_order_info = [];
 ?>
 
 <!DOCTYPE html> 
@@ -33,14 +35,27 @@
         <link rel = "stylesheet preload"    type = "text/css"    href = "style.css" as = "style"> 
     </head>
     <body>
+        <script>
+            const handle_proceed = (e) => {
+                <?php 
+                    $direct_order_info = [
+                        "id" => $product_id,
+                        "count_to_buy" => $count_to_buy
+                    ];
+                    $_SESSION["direct_order_info"] = $direct_order_info;
+                ?>
+
+                location.href = "/Basic-E-Commerce-Application/user_front/cargo_detail.php";
+            }
+        </script>
         <?php include("navbar.php"); ?>
         <main class = "p-5 pt-3">
             <div class = "d-flex flex-row justify-content-start gap-5">
                 <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" class = "w-25" alt = "<?php echo $product["name"]; ?>">
-                <form class = "d-flex flex-column justify-content-start gap-3" action = "direct_order_service.php?id=<?php echo $product["id"]; ?>&count_to_buy=<?php echo $count_to_buy; ?>" method = "POST">
+                <form class = "d-flex flex-column justify-content-start gap-3">
                     <p>Buying: <?php echo $count_to_buy; ?></p>
                     <p>Total Price: $<?php echo $count_to_buy * $product["price"]; ?>$</p>
-                    <input type = "submit" class = "btn btn-primary" value = "Confirm Purchase"/>
+                    <button type = "button" onclick = "handle_proceed()" class = "btn btn-primary">Proceed To Shipment</button>
                 </form>
             </div>
         </main>

@@ -16,6 +16,10 @@
         $_SESSION["previous_orders"] = [];
     }
 
+    if(!isset($_SESSION["direct_order_info"])){
+        $_SESSION["direct_order_info"] = [];
+    }
+
     ini_set('display_errors', '1'); // 1 is on, 0 is off
     ini_set('display_startup_errors', '1'); // 1 is on, 0 is off
     error_reporting(E_ALL);
