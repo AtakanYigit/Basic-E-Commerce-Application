@@ -2,7 +2,9 @@
     ini_set("display_errors", "1"); // 1 is on, 0 is off
     ini_set("display_startup_errors", "1"); // 1 is on, 0 is off
     error_reporting(E_ALL);
-?>
+    ?>
+
+<?php include("config.php"); ?>
 
 <!DOCTYPE html> 
 <html lang = "en"> 
@@ -18,7 +20,6 @@
         <link rel = "stylesheet preload"    type = "text/css"    href = "style.css" as = "style"> 
     </head>
     <body>
-        <?php include("config.php"); ?>
 
         <script>
             const handle_add_to_cart_click = (e, id, count) =>{
