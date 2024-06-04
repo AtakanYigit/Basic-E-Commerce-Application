@@ -24,8 +24,7 @@
         $encodedImage = null; // Set default value for $encodedImage
 
         if (isset($_FILES['image']) && !empty($_FILES['image']['tmp_name'])){
-            $image = file_get_contents($_FILES['image']['tmp_name']);
-            $encodedImage = base64_encode($image);
+            $encodedImage = file_get_contents($_FILES['image']['tmp_name']);
         }
 
         $url = $_SERVER['REQUEST_URI'];
@@ -45,22 +44,28 @@
         echo "---id: " . $product_id;
 
         // Update the product
-        if(!isset($_POST['image']) || empty($_POST['image'])){
-            $product_update_sql = "UPDATE products SET name = '$name', description = '$description', quantity = $quantity, price = $price WHERE id = $product_id";
+        if(!isset($encodedImage) || empty($encodedImage)){
+            $product_update_sql = $conn->prepare("UPDATE products SET name = ?, description = ?, quantity = ?, price = ? WHERE id = ?");
+            $product_update_sql->bind_param("sssss", $name, $description, $quantity, $price, $product_id);
         }else{
-            $product_update_sql = "UPDATE products SET name = '$name', description = '$description', quantity = $quantity, price = $price, image = '$encodedImage' WHERE id = $product_id";
+            $product_update_sql = $conn->prepare("UPDATE products SET name = ?, description = ?, quantity = ?, price = ?, image = ? WHERE id = ?");
+            $product_update_sql->bind_param("ssssss", $name, $description, $quantity, $price, $encodedImage, $product_id);
         }
 
-        if ($conn -> query ($product_update_sql)){
-            $result="<h2>*******Data insert success*******</h2>";
+        echo "<pre>";
+        print_r($product_update_sql);
+        echo "</pre>";
+
+        if ($product_update_sql->execute()){
+            $result="<h2>**Data insert success**</h2>";
         }else{
-            die($conn -> error);
+            die($conn->error);
         }
 
         //Delete the previous categories from product_categories
         $delete_previous_categories_sql = "DELETE FROM product_categories WHERE product_id = $product_id";
         if ($conn -> query ($delete_previous_categories_sql)){
-            $result="<h2>*******Data insert success*******</h2>";
+            $result="<h2>**Data insert success**</h2>";
         }else{
             die($conn -> error);
         }
@@ -74,7 +79,7 @@
 
             $product_categories_insert_sql = "INSERT INTO product_categories(product_id, category_id) VALUES ('$product_id', '$category_id')";
             if ($conn -> query ($product_categories_insert_sql)){
-                $result="<h2>*******Data insert success*******</h2>";
+                $result="<h2>**Data insert success**</h2>";
             }else{
                 die($conn -> error);
             }

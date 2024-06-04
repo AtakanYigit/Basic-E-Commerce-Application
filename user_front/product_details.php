@@ -52,7 +52,7 @@
                         <input type="number" name="count_to_buy" class="form-control" id="exampleInputName" value = "1" min = "1" max = "<?php echo $product["quantity"]; ?>">
                     </div>
                     <input type = "submit" class = "btn btn-primary" value = "Buy Now"/>
-                    <a class = "btn btn-secondary" href = "product_detail.php/<?php echo $product["name"]; ?>">Add to Cart</a>
+                    <button class="btn btn-secondary" style = "white-space:nowrap" type="button" onclick = "handle_add_to_cart_click(event, <?php echo $product['id']; ?>, document.querySelector('input[name=count_to_buy').value)">Add to Cart</button>
                 </form>
             </div>
         </main>

@@ -28,7 +28,7 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <title>Yiğit Default Admin Add Product</title>
+        <title>Helin Default Admin Add Product</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="">
@@ -71,7 +71,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label" style = "color: white">Image</label>
-                        <input type="file" name="image" style = "color: white" value = "<?php echo $product["image"]; ?>"/>
+                        <input type="file" name="image" style = "color: white"/>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </form>
