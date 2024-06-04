@@ -60,6 +60,7 @@
                     <?php if(count(query_parser("SELECT * FROM products")) == 0) echo'<h2>No products found</h2>';?>
                     <?php foreach(query_parser("SELECT * FROM products") as $product) { ?>
                         <?php if($product["quantity"] <= 0) continue; ?>
+                        <?php if($product["is_hidden"] == 1) continue; ?>
                         <form class = "card rounded" style = "width: 20%;" action = "direct_order.php?id=<?php echo $product["id"]; ?>" method = "POST">
                             <a href = "product_details.php?id=<?php echo $product["id"]; ?>" class = "card-img-top justify-content-center align-items-start d-flex overflow-hidden" style = "height: 200px;">
                                 <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" style = "max-width: 100%" alt = "<?php echo $product["name"]; ?>">

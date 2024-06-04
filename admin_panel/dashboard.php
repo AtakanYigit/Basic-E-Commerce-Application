@@ -43,8 +43,11 @@
                                 <p class = "card-text"><?php echo substr($product["description"], 0, 150); if(strlen($product["description"]) > 150) echo "..."; ?></p>
                                 <p class = "card-text"><?php echo $product["price"]; ?>$</p>
                                 <div class = "d-flex flex-row gap-3 justify-content-between align-items-center w-100">
-                                    <a class = "btn btn-warning" href = "product_edit.php?id=<?php echo $product["id"]; ?>">Edit</a>
-                                    <a class = "btn btn-danger" href = "product_delete_service.php?id=<?php echo $product["id"]; ?>">Delete</a>
+                                    <a class = "btn btn-warning"   href = "product_edit.php?id=<?php echo $product["id"]; ?>">Edit</a>
+                                    <a class = "btn btn-secondary" href = "change_visibility_service.php?id=<?php echo $product["id"]; ?>&status=<?php echo $product["is_hidden"] == 1 ? 0 : 1; ?>">
+                                        <?php echo $product["is_hidden"] == 1 ? "Show" : "Hide"; ?>
+                                    </a>
+                                    <a class = "btn btn-danger"    href = "product_delete_service.php?id=<?php echo $product["id"]; ?>">Delete</a>
                                 </div>
                             </div>
                         </div>
