@@ -32,7 +32,7 @@
     $name      = $_SESSION["shipment_info"][0]["name"];
     $surname   = $_SESSION["shipment_info"][0]["surname"];
 
-    $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname) VALUES ('$address', '$telephone', '$name', '$surname')";
+    $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname, status) VALUES ('$address', '$telephone', '$name', '$surname', 'waiting')";
     if ($conn -> query ($insertShipmentInfo)){
         $result="<h2>Shipment Info created</h2>";
         $shipment_info_id = $conn->insert_id;
@@ -41,11 +41,17 @@
         die($conn -> error);
     }
 
-    //Create Shipping Info in shipment_infos table
-    $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname) VALUES ($_SESSION["shipment_info"][0]["address"], $_SESSION["shipment_info"][0]["telephone"], $_SESSION["shipment_info"][0]["name"], $_SESSION["shipment_info"][0]["surname"])";
-    if ($conn -> query ($insertShipmentInfo)){
-        $result="<h2>Shipment Info created</h2>";
-        $shipment_info_id = $conn->insert_id;
+    //Create Billing Info in billing_infos table
+    $card_number = $_SESSION["payment_info"][0]["card_number"];
+    $card_holder = $_SESSION["payment_info"][0]["card_holder"];
+    $valid_month = $_SESSION["payment_info"][0]["valid_month"];
+    $valid_year  = $_SESSION["payment_info"][0]["valid_year"];
+    $ccv         = $_SESSION["payment_info"][0]["ccv"];
+
+    $insertBillingInfo = "INSERT INTO billing_infos (card_number, card_holder, valid_month, valid_year, ccv) VALUES ('$card_number', '$card_holder', '$valid_month', '$valid_year', '$ccv')";
+    if ($conn -> query ($insertBillingInfo)){
+        $result="<h2>Billing Info created</h2>";
+        $billing_info_id = $conn->insert_id;
         echo $result;
     }else{
         die($conn -> error);

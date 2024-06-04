@@ -42,11 +42,16 @@
                         <br/>
                             <?php 
                                 $shipment_info = query_parser("SELECT * FROM shipment_infos WHERE id = " . $order["shipment_info"])[0];
-                                echo $shipment_info["name"] . " " . $shipment_info["surname"] . "<br/>" . "Address: " . $shipment_info["address"] . "<br/>" . $shipment_info["telephone"];                                    
+                                echo $shipment_info["name"] . " " . $shipment_info["surname"] . "<br/>" . "Address: " . $shipment_info["address"] . "<br/>" . $shipment_info["telephone"] . "<br/>" . $shipment_info["status"];
                             ?>
+                            <form action = "/Basic-E-Commerce-Application/admin_panel/update_shipment_status_service.php?id=<?php echo $shipment_info['id']?>" method = "POST" class = "d-flex gap-3 align-items-center">
+                                <label for = "<?php echo $shipment_info['id']?>" style = "color: white; white-space:nowrap">Update Status:</label>
+                                <input type = "text" name = "status" class = "form-control" id = "<?php echo $shipment_info['id']?>" value = "<?php echo $shipment_info['status']?>">
+                                <button type = "submit" class = "btn btn-primary">Update</button>
+                            </form>
                         </p>
                         <p style = "color: white"><span style = "font-weight: 700">Billing Info:</span>
-                        <br/>
+                            <br/>
                             <?php 
                                 $billing_info = query_parser("SELECT * FROM billing_infos WHERE id = " . $order["billing_info"])[0];
                                 echo $billing_info["card_number"] . "<br/>" . 

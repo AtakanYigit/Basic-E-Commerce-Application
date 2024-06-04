@@ -54,7 +54,7 @@
                 <img src = "data:image/png;base64, <?php echo base64_encode($product["image"]); ?>" class = "w-25" alt = "<?php echo $product["name"]; ?>">
                 <form class = "d-flex flex-column justify-content-start gap-3">
                     <p>Buying: <?php echo $count_to_buy; ?></p>
-                    <p>Total Price: $<?php echo $count_to_buy * $product["price"]; ?>$</p>
+                    <p>Total Price: <?php echo $count_to_buy * $product["price"]; ?>$</p>
                     <button type = "button" onclick = "handle_proceed()" class = "btn btn-primary">Proceed To Shipment</button>
                 </form>
             </div>

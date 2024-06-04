@@ -42,7 +42,7 @@
                         <br/>
                             <?php 
                                 $shipment_info = query_parser("SELECT * FROM shipment_infos WHERE id = " . $order["shipment_info"])[0];
-                                echo $shipment_info["name"] . " " . $shipment_info["surname"] . "<br/>" . "Address: " . $shipment_info["address"] . "<br/>" . $shipment_info["telephone"];                                    
+                                echo $shipment_info["name"] . " " . $shipment_info["surname"] . "<br/>" . "Address: " . $shipment_info["address"] . "<br/>" . $shipment_info["telephone"] . "<br/>" . $shipment_info["status"];                                 
                             ?>
                         </p>
                         <p class = "mt-3" style = "text-decoration: none"><span style = "font-weight: 700">Products:</span></p>

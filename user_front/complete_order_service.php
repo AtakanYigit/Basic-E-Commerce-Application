@@ -17,7 +17,7 @@
     $name      = $_SESSION["shipment_info"][0]["name"];
     $surname   = $_SESSION["shipment_info"][0]["surname"];
 
-    $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname) VALUES ('$address', '$telephone', '$name', '$surname')";
+    $insertShipmentInfo = "INSERT INTO shipment_infos (address, telephone, name, surname, status) VALUES ('$address', '$telephone', '$name', '$surname', 'waiting')";
     if ($conn -> query ($insertShipmentInfo)){
         $result="<h2>Shipment Info created</h2>";
         $shipment_info_id = $conn->insert_id;
