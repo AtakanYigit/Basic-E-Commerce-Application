@@ -23,6 +23,14 @@
             }
         </script>
 
+        <script>
+            const handle_quantity_change = (e, index) => {
+                const quantity = e.value;
+                const url = "cart_update_service.php?index=" + index + "&quantity=" + quantity;
+                location.href = url;
+            }
+        </script>
+
         <main class = "p-5 pt-3">
             <h1>Your Cart!</h1>
             <p class = "mt-3" style = "text-decoration: none">Order Details:</p>
@@ -42,7 +50,10 @@
                             <div>
                                 <p class = "card-text" style = "text-decoration: none">Product: <?php echo $product["name"]; ?></p>
                                 <p class = "card-text" style = "text-decoration: none">Price: $<?php echo $product["price"]; ?></p>
-                                <p class = "card-text" style = "text-decoration: none">Quantity: <?php echo $product_quantity; ?></p>
+                                <p class = "card-text" style = "text-decoration: none">
+                                    Quantity: 
+                                    <input type = "number" name = "quantity" value = "<?php echo $product_quantity; ?>" style = "width: 50px" min = "1" max = "<?php echo $product["quantity"]; ?>" onchange = "handle_quantity_change(this, <?php echo $index; ?>)">
+                                </p>
                                 <p class = "card-text" style = "text-decoration: none">Total Price: $<?php echo $product["price"] * $product_quantity; ?></p>
                                 <button class = "btn btn-danger">Remove From Cart</button>
                             </div>
