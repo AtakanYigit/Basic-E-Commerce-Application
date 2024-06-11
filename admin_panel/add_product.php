@@ -41,7 +41,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPrice" class="form-label" style = "color: white">Price</label>
-                        <input type="Number" name="price" class="form-control" id="exampleInputPrice">
+                        <input name="price" class="form-control" id="exampleInputPrice">
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label" style = "color: white">Image</label>
